@@ -27,27 +27,34 @@ public class Main {
 
         if (diff == 1) {
             target = value.nextInt(11);
+            target++; //so that target cannot be 0
         }
         if (diff == 2) {
             target = value.nextInt(101);
+            target++;
         }
         if (diff == 3) {
             target = value.nextInt(1001);
+            target++;
         }
 
         System.out.print("I have my number. What's your guess? ");
-        int guess = input.nextInt();
+        int guess;
         int counter = 0;
-        while(guess != target) {
+        boolean e = true;
+        while(e) {
+            guess = input.nextInt();
             if (guess < target) {
                 counter++;
                 System.out.print("Too low. Guess again: ");
             }
             else if (guess > target) {
                 counter++;
-                System.out.print("Too high. Guess again:");
+                System.out.print("Too high. Guess again: ");
             }
-            input.nextInt();
+            else {
+                e = false;
+            }
         }
         System.out.printf("You got it in %d guesses!\n", counter + 1);
     }
